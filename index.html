@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Martha Machimu — Content Creator & Economist Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0c0e;
+    --surface: #141418;
+    --surface2: #1c1c22;
+    --border: #2a2a32;
+    --text: #f0ebe0;
+    --muted: #7a7585;
+    --gold: #c9a96e;
+    --violet: #8b6fff;
+    --gradient: linear-gradient(135deg, #8b6fff 0%, #c9a96e 100%);
+    --gradient-hover: linear-gradient(135deg, #a28aff 0%, #d9bd85 100%);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar Customization */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+  }
+
+  /* Scroll Progress Indicator */
+  .scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 101;
+    background: rgba(0,0,0,0.1);
+  }
+  .scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gradient);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(12,12,14,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s ease;
+  }
+  nav.scrolled {
+    padding: 0.8rem 3rem;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; transition: color 0.2s, transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 110;
+  }
+
+  /* Mobile Drawer Overlay */
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 105;
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .mobile-drawer.open {
+    right: 0;
+  }
+  .mobile-drawer a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.05em;
+  }
+  .mobile-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 104;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-drawer-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,111,255,0.14) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 70% 70%, rgba(201,169,110,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    transform: translateY(10px);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--muted); max-width: 520px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300; line-height: 1.7;
+    transform: translateY(10px);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+  }
+  .tag {
+    padding: 0.35rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8rem; color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    transition: all 0.3s ease;
+  }
+  .tag.highlight {
+    border-color: var(--violet);
+    color: var(--violet);
+    background: rgba(139,111,255,0.08);
+  }
+  .tag:hover {
+    border-color: var(--gold);
+    color: var(--text);
+    transform: translateY(-2px);
+  }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 0.75rem 1.8rem; border-radius: 8px;
+    font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--gradient); color: #0c0c0e;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(139,111,255,0.2); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--muted); background: var(--surface); transform: translateY(-1px); }
+
+  @keyframes fadeUp {
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--gold);
+    color: var(--text);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; position: relative; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--muted); max-width: 560px;
+    font-size: 1rem; line-height: 1.7; margin-bottom: 3.5rem;
+  }
+  .divider {
+    width: 40px; height: 2px;
+    background: var(--gradient);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about-text p {
+    color: var(--muted); font-size: 1rem;
+    line-height: 1.8; margin-bottom: 1.2rem;
+  }
+  .about-text p span { color: var(--text); font-weight: 500; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(201,169,110,0.5);
+  }
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block; margin-bottom: 0.3rem;
+  }
+  .stat-card .label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* ── WORK / PLATFORMS ── */
+  .platforms { background: var(--surface); }
+  .platforms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .platform-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-decoration: none; color: inherit;
+    transition: all 0.25s;
+    display: flex; flex-direction: column; gap: 1.2rem;
+    position: relative; overflow: hidden;
+  }
+  .platform-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gradient);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .platform-card:hover { border-color: var(--violet); transform: translateY(-4px); }
+  .platform-card:hover::before { transform: scaleX(1); }
+
+  .platform-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+  }
+  .platform-icon.tiktok { background: rgba(0,0,0,0.6); border: 1px solid #333; }
+  .platform-icon.instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+
+  .platform-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem;
+  }
+  .platform-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+  .platform-card .handle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; color: var(--gold);
+    margin-top: 0.5rem;
+  }
+  .platform-card .view-link {
+    margin-top: auto;
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--violet);
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: transform 0.2s;
+  }
+  .platform-card:hover .view-link {
+    transform: translateX(5px);
+  }
+  .content-types {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .content-type {
+    font-size: 0.72rem; padding: 0.2rem 0.65rem;
+    border-radius: 999px; border: 1px solid var(--border);
+    color: var(--muted); font-family: 'DM Mono', monospace;
+  }
+
+  /* ── ANALYTICS WIDGET: CREATOR ROI CALCULATOR ── */
+  .calculator-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  .calc-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .calc-card::after {
+    content: '';
+    position: absolute;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(139,111,255,0.08) 0%, transparent 70%);
+    bottom: -50px; right: -50px;
+    pointer-events: none;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+  }
+  .calc-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  .calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .calc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--gold);
+    display: flex;
+    justify-content: space-between;
+  }
+  .calc-label span.value {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .calc-input-row {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .calc-btn-option {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+  .calc-btn-option.active {
+    border-color: var(--violet);
+    color: var(--text);
+    background: rgba(139,111,255,0.1);
+  }
+  .calc-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .calc-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+  }
+  .calc-results {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .calc-result-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .calc-result-title {
+    font-size: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .calc-result-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .calc-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  /* ── TOOLS ── */
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  }
+  .tool-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.75rem 1.5rem;
+    transition: all 0.3s ease;
+  }
+  .tool-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .tool-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+  .tool-name {
+    font-weight: 600; font-size: 1rem; margin-bottom: 0.4rem;
+  }
+  .tool-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+  .tool-level {
+    margin-top: 1.2rem;
+    height: 4px; background: var(--border); border-radius: 99px; overflow: hidden;
+  }
+  .tool-level-fill {
+    height: 100%; border-radius: 99px;
+    background: var(--gradient);
+    width: 0%; /* Populated dynamically by JS on load/scroll */
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem 2.5rem;
+    display: flex; gap: 2rem; align-items: flex-start;
+  }
+  .exp-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--surface2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .exp-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .exp-meta { font-size: 0.85rem; color: var(--gold); margin-bottom: 0.75rem; }
+  .exp-list { list-style: none; }
+  .exp-list li {
+    font-size: 0.92rem; color: var(--muted); line-height: 1.65;
+    padding: 0.3rem 0; padding-left: 1.2rem; position: relative;
+  }
+  .exp-list li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--violet); font-size: 0.8rem;
+  }
+
+  /* ── CERT ── */
+  .cert-card {
+    background: linear-gradient(135deg, rgba(139,111,255,0.08), rgba(201,169,110,0.08));
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 16px; padding: 2.5rem;
+    display: flex; gap: 2rem; align-items: center;
+    transition: border-color 0.3s ease;
+  }
+  .cert-card:hover {
+    border-color: rgba(201,169,110,0.6);
+  }
+  .cert-badge {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; flex-shrink: 0;
+  }
+  .cert-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem;
+  }
+  .cert-info p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+  .cert-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--gold);
+    margin-top: 0.5rem; display: block;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--surface); text-align: center; }
+  .contact-links {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--border); border-radius: 8px;
+    color: var(--muted); text-decoration: none;
+    font-size: 0.88rem; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .contact-link:hover { color: var(--text); border-color: var(--gold); background: var(--bg); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem 2rem; text-align: center;
+    font-size: 0.78rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 992px) {
+    .calc-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+    .about-grid, .platforms-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .exp-card, .cert-card { flex-direction: column; }
+    section { padding: 4rem 1.5rem; }
+    .calc-card { padding: 2rem 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .tools-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 3.2rem; }
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress-container">
+  <div class="scroll-progress-bar" id="progressBar"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#top" class="nav-logo">
+    <span class="nav-name">Martha Machimu</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#tools">Tools</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="mobile-menu-btn" id="menuToggleBtn" aria-label="Toggle Menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+</nav>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#work" class="drawer-link">Work</a>
+  <a href="#analytics" class="drawer-link">Analytics Tool</a>
+  <a href="#tools" class="drawer-link">Tools</a>
+  <a href="#experience" class="drawer-link">Experience</a>
+  <a href="#contact" class="drawer-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <p class="hero-eyebrow">✦ Content Producer · Media Editor · Economist</p>
+  <h1>Martha<br/>Machimu</h1>
+  <p class="hero-sub">I create short-form content that connects — combining visual storytelling, purposeful editing, and a data-driven understanding of what audiences actually engage with.</p>
+  <div class="hero-tags">
+    <span class="tag highlight">Adobe After Effects</span>
+    <span class="tag highlight">CapCut</span>
+    <span class="tag highlight">VideoStar</span>
+    <span class="tag">Short-form Video</span>
+    <span class="tag">Social Media Strategy</span>
+    <span class="tag">Economics · Data Analytics</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#work" class="btn btn-primary">View My Work ↓</a>
+    <button onclick="copyToClipboard('marthamachimu@gmail.com', 'Email copied to clipboard!')" class="btn btn-outline">Copy Email ✉️</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <div class="divider"></div>
+        <h2 class="section-title">Analytical mind.<br/>Creative eye.</h2>
+        <p>I'm an <span>Economics undergraduate at Nile University of Nigeria</span> (GPA: 3.66) with a genuine passion for digital content creation. I don't just make videos — I think about <span>why</span> content works, who it's for, and how to make it better.</p>
+        <p>Currently interning at <span>Dignity Finance and Investment</span>, I bring the same rigour I apply to financial analysis to every piece of content I produce — research first, then execution.</p>
+        <p>Certified by <span>Art Explora Academy (Sorbonne University)</span>, I believe creativity and intellectual depth aren't opposites. They're the combination that makes content truly stand out.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="num">5K</span>
+          <span class="label">TikTok Followers<br/>@marenmauser</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">1K</span>
+          <span class="label">Instagram Followers<br/>@frmvirgo</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">3+</span>
+          <span class="label">Editing tools<br/>mastered</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">3.66</span>
+          <span class="label">GPA<br/>Economics, NUN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / PLATFORMS -->
+<section id="work" class="platforms">
+  <div class="container">
+    <p class="section-label">My Work</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Content across platforms</h2>
+    <p class="section-desc">I produce and edit original short-form video content across TikTok and Instagram. Click either card to view my live profiles and see my work directly.</p>
+
+    <div class="platforms-grid">
+      <!-- TikTok Card -->
+      <a href="https://www.tiktok.com/@marenmauser" target="_blank" class="platform-card">
+        <div class="platform-icon tiktok">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.79a4.86 4.86 0 01-1.02-.1z"/></svg>
+        </div>
+        <div>
+          <h3>TikTok</h3>
+          <p class="handle">@marenmauser (5K+ Followers)</p>
+          <p>Short-form video content crafted with fast-paced editing, trending audio, and strong visual hooks. Produced end-to-end using CapCut and Adobe After Effects.</p>
+        </div>
+        <div class="content-types">
+          <span class="content-type">Short-form Video</span>
+          <span class="content-type">Trend-led Content</span>
+          <span class="content-type">Video Editing</span>
+          <span class="content-type">Audio Sync</span>
+        </div>
+        <span class="view-link">View TikTok Profile →</span>
+      </a>
+
+      <!-- Instagram Card -->
+      <a href="https://www.instagram.com/frmvirgo" target="_blank" class="platform-card">
+        <div class="platform-icon instagram">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0 3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div>
+          <h3>Instagram</h3>
+          <p class="handle">@frmvirgo (1K+ Followers)</p>
+          <p>Curated visual content with a consistent aesthetic identity. Combines still imagery, Reels, and branded storytelling — edited with VideoStar and After Effects.</p>
+        </div>
+        <div class="content-types">
+          <span class="content-type">Reels</span>
+          <span class="content-type">Visual Branding</span>
+          <span class="content-type">Aesthetic Direction</span>
+          <span class="content-type">Storytelling</span>
+        </div>
+        <span class="view-link">View Instagram Profile →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS WIDGET SECTION -->
+<section id="analytics" class="calculator-section">
+  <div class="container">
+    <p class="section-label">Interactive Sandbox</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Campaign Estimator</h2>
+    <p class="section-desc">Because content strategy should be informed by economics. Slide the variables below to simulate forecasted digital impact based on algorithmic engagement modeling.</p>
+
+    <div class="calc-card">
+      <div class="calc-grid">
+        <div class="calc-controls">
+          <!-- Platform Option -->
+          <div class="calc-group">
+            <span class="calc-label">Target Platform</span>
+            <div class="calc-input-row">
+              <button class="calc-btn-option active" onclick="setPlatform('tiktok', this)">TikTok</button>
+              <button class="calc-btn-option" onclick="setPlatform('instagram', this)">Instagram</button>
+            </div>
+          </div>
+
+          <!-- Strategy Option -->
+          <div class="calc-group">
+            <span class="calc-label">Campaign Focus Strategy</span>
+            <div class="calc-input-row">
+              <button class="calc-btn-option active" onclick="setStrategy('viral', this)">High Reach / Viral</button>
+              <button class="calc-btn-option" onclick="setStrategy('conversion', this)">Conversions / Sales</button>
+            </div>
+          </div>
+
+          <!-- Budget Slider -->
+          <div class="calc-group">
+            <span class="calc-label">
+              Projected Content Budget 
+              <span class="value" id="budgetValue">$500</span>
+            </span>
+            <input type="range" min="100" max="5000" step="100" value="500" class="calc-slider" id="budgetSlider" oninput="calculateROI()">
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <div class="calc-result-metric">
+            <span class="calc-result-title">Projected Organic Views</span>
+            <span class="calc-result-value" id="projectedViews">12,500</span>
+          </div>
+
+          <div class="calc-result-metric">
+            <span class="calc-result-title">Estimated Conversions/Leads</span>
+            <span class="calc-result-value" id="projectedConversions">312</span>
+          </div>
+
+          <div class="calc-note">
+            <span>💡</span>
+            <span>Based on regional average engagement parameters & organic discovery loops for short-form video in 2026.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <p class="section-label">Creative Toolkit</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Tools I work with</h2>
+    <p class="section-desc">From motion graphics to mobile-first edits, I use industry-standard tools to bring ideas to life.</p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-icon">🎬</span>
+        <div class="tool-name">Adobe After Effects</div>
+        <div class="tool-desc">Motion graphics, visual effects, compositing, and advanced transitions. Used for premium-quality edit sequences and animated elements.</div>
+        <div class="tool-level"><div class="tool-level-fill" data-percent="78"></div></div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">✂️</span>
+        <div class="tool-name">CapCut</div>
+        <div class="tool-desc">Primary mobile editing suite for short-form content. Fast-paced cuts, beat-synced edits, captions, colour grading, and trend-responsive production.</div>
+        <div class="tool-level"><div class="tool-level-fill" data-percent="92"></div></div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">⭐</span>
+        <div class="tool-name">VideoStar</div>
+        <div class="tool-desc">Advanced effects, blending modes, and multi-layer editing. Used for aesthetic, stylised videos with distinctive visual treatments.</div>
+        <div class="tool-level"><div class="tool-level-fill" data-percent="72"></div></div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">📊</span>
+        <div class="tool-name">Analytics & Strategy</div>
+        <div class="tool-desc">Audience analysis, trend identification, performance tracking. Informed by economics and data analytics training — not just intuition.</div>
+        <div class="tool-level"><div class="tool-level-fill" data-percent="80"></div></div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">🎨</span>
+        <div class="tool-name">Visual Direction</div>
+        <div class="tool-desc">Colour grading, typography, visual branding, and aesthetic consistency across platform content. Strong attention to quality and detail.</div>
+        <div class="tool-level"><div class="tool-level-fill" data-percent="85"></div></div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">🧠</span>
+        <div class="tool-name">AI Content Tools</div>
+        <div class="tool-desc">Actively learning and integrating AI-assisted workflows for content evaluation, ideation, and production optimisation.</div>
+        <div class="tool-level"><div class="tool-level-fill" data-percent="60"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background: var(--surface);">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Where I've worked</h2>
+    <p class="section-desc">Blending finance and creativity — both demand precision, structure, and the ability to communicate complex ideas clearly.</p>
+
+    <div class="exp-card">
+      <div class="exp-icon">💼</div>
+      <div class="exp-content">
+        <h3>Finance &amp; Investment Intern</h3>
+        <p class="exp-meta">Dignity Finance and Investment · Summer 2026 · Nigeria</p>
+        <ul class="exp-list">
+          <li>Supporting financial analysis and investment research in a professional finance environment</li>
+          <li>Applying economics and data analytics knowledge to real-world financial processes and client reporting</li>
+          <li>Gaining exposure to investment strategies, financial modelling, and operations — skills directly transferable to data-driven content strategy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <p class="section-label">Certifications</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Credentials</h2>
+    <p class="section-desc">Formally recognised achievements beyond the degree.</p>
+
+    <div class="cert-card">
+      <div class="cert-badge">🏛️</div>
+      <div class="cert-info">
+        <h3>Art Explora Certificate</h3>
+        <p>Awarded by Art Explora Academy and validated by <strong style="color:var(--text)">Sorbonne Université</strong> — one of France's most prestigious research universities. An international certificate in arts and cultural education, reflecting a strong foundation in visual and creative thinking.</p>
+        <span class="cert-date">✦ Issued May 23, 2026 · Paris, France</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container">
+    <p class="section-label">Get in Touch</p>
+    <div class="divider" style="margin: 0 auto 1.5rem;"></div>
+    <h2 class="section-title">Let's work together</h2>
+    <p style="color:var(--muted); max-width:480px; margin: 0 auto; line-height:1.7;">Open to content production roles, AI training projects, and creative collaborations. Based in Nigeria · Available remotely.</p>
+    
+    <div class="contact-links">
+      <div class="contact-link" onclick="copyToClipboard('marthamachimu@gmail.com', 'Email address copied!')">✉️ marthamachimu@gmail.com</div>
+      <a href="https://www.linkedin.com/in/martha-machimu-b132a8331" target="_blank" class="contact-link">💼 LinkedIn</a>
+      <a href="https://www.tiktok.com/@marenmauser" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.79a4.86 4.86 0 01-1.02-.1z"/></svg>
+        TikTok @marenmauser
+      </a>
+      <a href="https://www.instagram.com/frmvirgo" target="_blank" class="contact-link">📸 Instagram @frmvirgo</a>
+      <div class="contact-link" onclick="copyToClipboard('+2348030921364', 'Phone number copied!')">📞 +234 803 092 1364</div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast -->
+<div id="toastNotification" class="toast">
+  <span id="toastMessage">Copied to clipboard!</span>
+</div>
+
+<footer>
+  <p>© 2026 Martha Machimu · Nile University of Nigeria · Built with intention.</p>
+</footer>
+
+<script>
+  /* Scroll Progress Indicator & Minimal Nav Styling */
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  /* Mobile Drawer Toggle Logic */
+  const menuToggleBtn = document.getElementById("menuToggleBtn");
+  const mobileDrawer = document.getElementById("mobileDrawer");
+  const drawerBackdrop = document.getElementById("drawerBackdrop");
+  const drawerLinks = document.querySelectorAll(".drawer-link");
+
+  function toggleDrawer() {
+    mobileDrawer.classList.toggle("open");
+    drawerBackdrop.classList.toggle("show");
+  }
+
+  menuToggleBtn.addEventListener("click", toggleDrawer);
+  drawerBackdrop.addEventListener("click", toggleDrawer);
+  drawerLinks.forEach(link => {
+    link.addEventListener("click", toggleDrawer);
+  });
+
+  /* Tool Skill Level Animation on Scroll */
+  const fillBars = document.querySelectorAll('.tool-level-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const percent = entry.target.getAttribute('data-percent');
+        entry.target.style.width = percent + '%';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  fillBars.forEach(bar => {
+    observer.observe(bar);
+  });
+
+  /* Safe Copy-to-Clipboard Function (No alert boxes) */
+  function copyToClipboard(text, customMessage) {
+    const tempInput = document.createElement('textarea');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMessage');
+    toastMsg.innerText = customMessage;
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2500);
+  }
+
+  /* Creator ROI & Analytics Calculator Sandbox Logic */
+  let activePlatform = 'tiktok';
+  let activeStrategy = 'viral';
+
+  function setPlatform(platform, btn) {
+    activePlatform = platform;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.calc-btn-option').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    calculateROI();
+  }
+
+  function setStrategy(strategy, btn) {
+    activeStrategy = strategy;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.calc-btn-option').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    calculateROI();
+  }
+
+  function calculateROI() {
+    const budgetVal = parseInt(document.getElementById('budgetSlider').value);
+    document.getElementById('budgetValue').innerText = `$${budgetVal.toLocaleString()}`;
+
+    let viewMultiplier = 25; // Base organic view multiplier
+    let conversionRate = 0.025; // Base organic conversion rate
+
+    if (activePlatform === 'tiktok') {
+      viewMultiplier = activeStrategy === 'viral' ? 35 : 18;
+      conversionRate = activeStrategy === 'viral' ? 0.015 : 0.04;
+    } else { // instagram
+      viewMultiplier = activeStrategy === 'viral' ? 20 : 12;
+      conversionRate = activeStrategy === 'viral' ? 0.02 : 0.055;
+    }
+
+    const projectedViews = Math.round(budgetVal * viewMultiplier);
+    const projectedConversions = Math.round(projectedViews * conversionRate);
+
+    document.getElementById('projectedViews').innerText = projectedViews.toLocaleString();
+    document.getElementById('projectedConversions').innerText = projectedConversions.toLocaleString();
+  }
+
+  // Initial Calculation Run
+  calculateROI();
+</script>
+
+</body>
+</html>
+
+```
